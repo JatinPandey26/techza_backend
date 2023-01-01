@@ -60,9 +60,9 @@ export const loginContoller = catchAsyncError(async (req, res, next) => {
 });
 
 export const logoutController = catchAsyncError(async (req, res, next) => {
-  res
+  await res
     .status(200)
-    .cookie("token", "", {
+    .cookie("token", null , {
       expires: new Date(Date.now()),
       httpOnly: true,
       secure: true,
