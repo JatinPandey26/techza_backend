@@ -38,8 +38,7 @@ export const registerContoller = catchAsyncError(async (req, res, next) => {
     },
   });
 
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  
 
   sendToken(res, user, "Registered Successfully", 201);
 });

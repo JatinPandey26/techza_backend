@@ -7,7 +7,8 @@ export const sendToken = (res, user, message, statusCode = 200) => {
     secure: true, // secure attribute is to prevent cookies from being observed by unauthorized parties due to the transmission of the cookie in clear text
     sameSite: "none",
   };
-
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.status(statusCode).cookie("token", token, options).json({
     success: true,
     message,
