@@ -60,18 +60,16 @@ export const loginContoller = catchAsyncError(async (req, res, next) => {
 });
 
 export const logoutController = catchAsyncError(async (req, res, next) => {
-  return res
-    .status(200)
-    .cookie("token", null , {
-      expires: new Date(Date.now()),
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    })
-    .json({
-      success: true,
-      message: "logout Successfully",
-    });
+  const options = {
+    expires: new Date(Date.now()),
+    httpOnly: true, // prevents client-side scripts from accessing data only store cookie in http (server side)
+    secure: true, // secure attribute is to prevent cookies from being observed by unauthorized parties due to the transmission of the cookie in clear text
+    sameSite: "none",
+  };
+  res.status(200).cookie("token", null, options).json({
+    success: true,
+    message: "logout Successfully",
+  });
 });
 
 export const getMyProfileController = catchAsyncError(
