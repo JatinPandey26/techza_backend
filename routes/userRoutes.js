@@ -31,7 +31,7 @@ router.route("/login").post(loginContoller);
 
 // logout
 
-router.route("/logout").get(logoutController);
+router.route("/logout").post(logoutController);
 
 // get my profile
 
