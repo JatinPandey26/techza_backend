@@ -60,7 +60,7 @@ export const loginContoller = catchAsyncError(async (req, res, next) => {
 });
 
 export const logoutController = catchAsyncError(async (req, res, next) => {
-  await res
+  return res
     .status(200)
     .cookie("token", null , {
       expires: new Date(Date.now()),
