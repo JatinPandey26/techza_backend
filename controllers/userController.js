@@ -62,12 +62,6 @@ export const loginContoller = catchAsyncError(async (req, res, next) => {
 export const logoutController = catchAsyncError(async (req, res, next) => {
   res
     .status(200)
-    .clearCookie("token", {
-      expires: new Date(Date.now()),
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-    })
     .cookie("token", "", {
       expires: new Date(Date.now()),
       httpOnly: true,
