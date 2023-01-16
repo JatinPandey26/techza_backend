@@ -14,7 +14,7 @@ export const registerContoller = catchAsyncError(async (req, res, next) => {
 
   const file = req.file;
 
-  if (!name || !email || !password || !file)
+  if (!name || !email || !password )
     return next(new ErrorHandler("Please enter all fields", 400));
 
   let user = await User.findOne({ email });
@@ -87,19 +87,19 @@ export const getMyProfileController = catchAsyncError(
 
 export const changePasswordController = catchAsyncError(
   async (req, res, next) => {
-    const { oldpassword, newpassword } = req.body;
-
-    if (!oldpassword || !newpassword)
+    const { oldPassword, newPassword } = req.body;
+    console.log(oldPassword,newPassword);
+    if (oldPassword === undefined || newPassword === undefined)
       return next(new ErrorHandler("Please enter all fields", 400));
 
     const user = await User.findById(req.user._id).select("+password");
 
-    const isMatch = await user.comparePassword(oldpassword);
+    const isMatch = await user.comparePassword(oldPassword);
 
     if (!isMatch)
       return next(new ErrorHandler("old password is Incorrect", 401)); // 401 not macth
 
-    user.password = newpassword;
+    user.password = newPassword;
 
     await user.save();
 
