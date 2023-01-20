@@ -82,7 +82,7 @@ export const cancelSubscriptionController = catchAsyncError(async (req,res,next)
 
   let refund = false;
 
-  await instance.subscription.cancel(subscriptionId);
+  await instance.subscriptions.cancel(subscriptionId);
 
   const payment = await Payment.findOne({
     razorpay_subscription_id : subscriptionId

@@ -7,7 +7,7 @@ const router = express.Router();
 
 // buy subscription
 
-router.route("/subscribe").post(isAuthenticated,buySubscriptionController);
+router.route("/subscribe").get(isAuthenticated,buySubscriptionController);
 
 // payment verification and save reference in database
 
@@ -19,7 +19,7 @@ router.route("/razorpaykey").get(isAuthenticated,getRazorPayKeyController);
 
 // cancel  subscription
 
-router.route("/subscibe/cancel").delete(isAuthenticated,authorizeSubscriber,cancelSubscriptionController);
+router.route("/subscribe/cancel").delete(isAuthenticated,authorizeSubscriber,cancelSubscriptionController);
 
 
 export default router;
