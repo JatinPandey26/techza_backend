@@ -23,7 +23,7 @@ app.use(
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'https://techza.vercel.app/',
+    origin: 'https://techza.vercel.app',
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
