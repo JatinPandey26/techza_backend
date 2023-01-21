@@ -24,16 +24,28 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
-    credentials:true,
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
-})
+});
 
 app.use("/api/v1", courseRoute);
 app.use("/api/v1", userRoute);
