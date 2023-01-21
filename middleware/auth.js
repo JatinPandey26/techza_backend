@@ -23,7 +23,7 @@ export const authorizeAdmin = (req, res, next) => {
         403
       )
     );
-
+ // calling next
   next(); // to next middleware
 };
 
